@@ -1,26 +1,50 @@
-import axios from 'axios';
-import md5 from 'md5';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import apiMarvel from '../../services/apiMarvel';
+import { Container } from './styles';
+
+//base do retorno do console.log, selecionei somente os campos que eu queria
+interface ResponseData {
+  id: string;
+  name: string;
+  description: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+}
 
 const ListTeam = () => {
-  const baseURL = 'http://gateway.marvel.com/v1/public';
-  const publicKey = '235783f282b532cd5baa039f755ca573';
-  const privateKey = '12f72ff90048d7d130606da7593da09d562cce63';
-  const time = Number(new Date()); //timestamp
-  const hash = md5(time + privateKey + publicKey); //Criando um hash
+  const [characters, setCharacters] = useState<ResponseData[]>([]);
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}/characters?ts=${time}&apikey=${publicKey}&hash=${hash}`)
-      .then(res => console.log('Retorno >>> ', res))
+    apiMarvel
+      .get('/characters')
+      .then(res => {
+        console.log(res.data.data.results);
+        setCharacters(res.data.data.results);
+      })
       .catch(err => console.log(err));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div>
-      <p>Herois</p>
-    </div>
+    <Container>
+      <h1>Herois</h1>
+      {/* TODO: gerar lista de herois e permitir acessar 1 a 1 em outra janela */}
+      <ul>
+        {characters.map(character => {
+          return (
+            <li key={character.id}>
+              <img
+                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                alt={`Foto do ${character.name}`}
+              />
+              <span className="name">{character.name}</span>
+              <span className="description">{character.description}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </Container>
   );
 };
 

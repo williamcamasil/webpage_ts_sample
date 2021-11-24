@@ -148,6 +148,8 @@ OU
 yarn add styled-components
 
 npm i --save-dev @types/styled-components
+OU
+yarn add -D @types/styled-components
 ```
 
 Exemplo: 
@@ -186,6 +188,53 @@ const Button = () => {
 
 export default Button;
 ```
+
+
+
+##### GlobalStyle
+
+Crie uma pasta style dentro de src e dentro da pasta crie um arquivo global.ts com o seguinte código :
+
+```typescript
+import { createGlobalStyle } from 'styled-components';
+
+export default createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+
+    font-family: 'Marvel', sans-serif;
+  }
+`;
+```
+
+Para usa-lo: (import GlobalStyle)
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import GlobalStyle from './styles/global';
+
+// import Home from './screens/Home';
+import ListTeam from './screens/ListTeam';
+
+ReactDOM.render(
+  <React.StrictMode>
+    {/* <Home /> */}
+    <ListTeam />
+    <GlobalStyle />
+  </React.StrictMode>,
+
+  document.getElementById('root'),
+);
+```
+
+Dessa forma ele será aplicado em toda a aplicação.
+
+
 
 OBS: Fazer exemplos mais avançados usando condições, estado global e passagem de pros
 
@@ -477,3 +526,34 @@ axios
 - https://developer.marvel.com/documentation/authorization
 - https://developer.marvel.com/docs
 - https://developer.marvel.com/account
+
+
+
+##### Google Fonts
+
+[font marvel](https://fonts.google.com/specimen/Marvel)
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+```
+
+Copie o codigo e colo em public/index.html dentro do head.
+
+[Aula consumindo API Marvel e renderizando na tela](https://www.youtube.com/watch?v=hyX2BZBbbPc&ab_channel=luizsilva)
+
+- Styled Component
+- Estilização global
+- Verificando o que api esta trazendo no console log (campos)
+- Criando interface com os campos a partir do conteúdo retornado
+- Usando google fonts
+- Renderizando na tela
+
+---
+
+
+
+### Fazer
+
+- Emitir mensagem de erro quando a api retornar com erro
