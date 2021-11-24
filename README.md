@@ -60,7 +60,7 @@ build
 
 #### .eslintrc.json
 
-```
+```json
 {
     "env": {
         "browser": true,
@@ -113,7 +113,7 @@ dist
 
 #### .prettierrc.json
 
-```
+```json
 {
   "semi": true,
   "trailingComma":"all",
@@ -127,7 +127,7 @@ dist
 
 #### settings.json
 
-```
+```json
 {
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
@@ -190,6 +190,166 @@ export default Button;
 OBS: Fazer exemplos mais avançados usando condições, estado global e passagem de pros
 
 ----
+
+### Mock
+
+JSON sample
+
+```json
+{
+  "aprovados": [
+    {
+      "nome": "Fernanda Paulina de Souza",
+      "idade": 38,
+      "trabalho": "Tech Lead",
+      "renda": 5920.21,
+      "casado": true,
+      "veiculo": [
+        {
+          "tipo": "carro",
+          "modelo": "chefrolet",
+          "ano": 2004
+        },
+
+        {
+          "tipo": "moto",
+          "modelo": "honda",
+          "ano": 2021
+        }
+      ]
+    },
+
+    {
+      "nome": "William Camargo",
+      "idade": 27,
+      "trabalho": "Programador",
+      "renda": 350.40,
+      "casado": false,
+      "veiculo": [
+        {
+          "tipo": "moto",
+          "modelo": "yamaha",
+          "ano": 2017
+        }
+      ]
+    }
+  ],
+
+  "desaprovados": [
+    {
+      "nome": "Ruan Miguel",
+      "idade": 23,
+      "trabalho": "Eletricista",
+      "renda": 1890.33,
+      "casado": true,
+      "veiculo": [
+        {
+          "tipo": "carro",
+          "modelo": "honda",
+          "ano": 2019
+        }
+      ]
+    },
+
+    {
+      "nome": "Larissa Fonseca",
+      "idade": 33,
+      "trabalho": "Coordenadora de Gestão",
+      "renda": 3450.89,
+      "casado": false,
+      "veiculo": []
+    }
+  ]
+}
+```
+
+##### Exemplo de uso
+
+````tsx
+import { useEffect, useState } from 'react';
+import canditadesMock from '../../../mock/candidates.json';
+
+type CanditadesApproved = {
+  nome: string;
+  idade: number;
+};
+
+type CanditadesDisapproved = {
+  nome: string;
+  idade: number;
+};
+
+const MockList = () => {
+  const [canditadeApproved, setCanditadeApproved] =
+    useState<CanditadesApproved[]>();
+  const [canditadeDisapproved, setCanditadeDisapproved] =
+    useState<CanditadesDisapproved[]>();
+
+  useEffect(() => {
+    // Simulando dados vindo de uma API e sendo inseridos no useState
+    setCanditadeApproved(canditadesMock.aprovados);
+    setCanditadeDisapproved(canditadesMock.desaprovados);
+  }, []);
+
+  return (
+    <>
+      <h1>Lista de Candidatos</h1>
+      <div className="list-approved">
+        <p>Aprovados</p>
+
+        <table>
+          <thead>
+            <th>Nome</th>
+            <th>Idade</th>
+          </thead>
+
+          {canditadeApproved?.map(c => {
+            return (
+              // TODO: passar por props e permitir selecionar 1 para trazer mais informacoes em outra pagina
+              //key nao e o certo
+              <tbody key={c.nome}>
+                <td>{c.nome}</td>
+                <td>{c.idade}</td>
+              </tbody>
+            );
+          })}
+        </table>
+      </div>
+
+      <div className="list-disapproved">
+        <p>Reprovados</p>
+
+        <table>
+          <thead>
+            <th>Nome</th>
+            <th>Idade</th>
+          </thead>
+
+          {canditadeDisapproved?.map(c => {
+            return (
+              // TODO: passar por props e permitir selecionar 1 para trazer mais informacoes em outra pagina
+              //key nao e o certo
+              <tbody key={c.nome}>
+                <td>{c.nome}</td>
+                <td>{c.idade}</td>
+              </tbody>
+            );
+          })}
+        </table>
+      </div>
+    </>
+  );
+};
+
+export default MockList;
+
+````
+
+
+
+---
+
+
 
 
 
