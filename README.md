@@ -140,3 +140,56 @@ dist
 
 ----
 
+### [Styled Components](https://styled-components.com/docs/basics)
+
+```
+npm install --save styled-components
+OU
+yarn add styled-components
+
+npm i --save-dev @types/styled-components
+```
+
+Exemplo: 
+
+##### styles.ts
+
+```typescript
+import styled from 'styled-components';
+
+const ButtonStyled = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+`;
+
+export { ButtonStyled };
+```
+
+##### index.tsx (Button)
+
+```tsx
+import { ButtonStyled } from './style';
+
+const Button = () => {
+  return (
+    <div>
+      <ButtonStyled>
+        <p>Button Component</p>
+      </ButtonStyled>
+    </div>
+  );
+};
+
+export default Button;
+```
+
+OBS: Fazer exemplos mais avançados usando condições, estado global e passagem de pros
+
+----
+
+
+
