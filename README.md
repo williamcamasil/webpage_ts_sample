@@ -439,3 +439,41 @@ export default ExUtil;
 
 ````
 
+
+
+---
+
+### Rest API ([API Marvel](https://www.youtube.com/watch?v=jlqgqSFIKPU&ab_channel=luizsilva))
+
+```
+yarn add axios
+yarn add md5
+yarn add -D @types/md5
+```
+
+##### Como consumir
+
+````tsx
+import axios from 'axios';
+import md5 from 'md5';
+import { useEffect } from 'react';
+
+const baseURL = 'http://gateway.marvel.com/v1/public';
+const publicKey = '235783f282b532cd5baa039f755ca573';
+const privateKey = '12f72ff90048d7d130606da7593da09d562cce63';
+const time = Number(new Date()); //timestamp
+const hash = md5(time + privateKey + publicKey); //Criando um hash
+
+useEffect(() => {
+axios
+  .get(`${baseURL}/characters?ts=${time}&apikey=${publicKey}&hash=${hash}`)
+  .then(res => console.log('Retorno >>> ', res))
+  .catch(err => console.log(err));
+}, []);
+````
+
+##### Links usados (**obs:** depois de autenticado no site)
+
+- https://developer.marvel.com/documentation/authorization
+- https://developer.marvel.com/docs
+- https://developer.marvel.com/account
