@@ -1,0 +1,65 @@
+{
+  "aprovados": [
+    {
+      "nome": "Fernanda Paulina de Souza",
+      "idade": 38,
+      "trabalho": "Tech Lead",
+      "renda": 5920.21,
+      "casado": true,
+      "veiculo": [
+        {
+          "tipo": "carro",
+          "modelo": "chefrolet",
+          "ano": 2004
+        },
+
+        {
+          "tipo": "moto",
+          "modelo": "honda",
+          "ano": 2021
+        }
+      ]
+    },
+
+    {
+      "nome": "William Camargo",
+      "idade": 27,
+      "trabalho": "Programador",
+      "renda": 350.40,
+      "casado": false,
+      "veiculo": [
+        {
+          "tipo": "moto",
+          "modelo": "yamaha",
+          "ano": 2017
+        }
+      ]
+    }
+  ],
+
+  "desaprovados": [
+    {
+      "nome": "Ruan Miguel",
+      "idade": 23,
+      "trabalho": "Eletricista",
+      "renda": 1890.33,
+      "casado": true,
+      "veiculo": [
+        {
+          "tipo": "carro",
+          "modelo": "honda",
+          "ano": 2019
+        }
+      ]
+    },
+
+    {
+      "nome": "Larissa Fonseca",
+      "idade": 33,
+      "trabalho": "Coordenadora de Gestão",
+      "renda": 3450.89,
+      "casado": false,
+      "veiculo": []
+    }
+  ]
+}
