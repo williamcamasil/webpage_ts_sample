@@ -3,6 +3,10 @@ import MockList from '../../components/MockComponents/MockList';
 import MockUnit from '../../components/MockComponents/MockUnit';
 
 const Home = () => {
+  const handleClick = () => {
+    console.log('Clicou aqui');
+  };
+
   return (
     <div>
       <p>Home Screen</p>
@@ -10,7 +14,8 @@ const Home = () => {
       <MockList />
       <MockUnit />
 
-      <Button />
+      {/* <button onClick={handleClick}>Clicou!</button> */}
+      <Button textButton={'Clique aqui'} click={() => handleClick} />
     </div>
   );
 };

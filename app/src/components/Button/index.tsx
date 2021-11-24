@@ -1,10 +1,15 @@
 import { ButtonStyled } from './styles';
 
-const Button = () => {
+type Props = {
+  textButton: string;
+  click: Function;
+};
+
+const Button = ({ textButton, click }: Props) => {
   return (
     <div>
-      <ButtonStyled>
-        <p>Button Component</p>
+      <ButtonStyled onClick={click()}>
+        <p>{textButton}</p>
       </ButtonStyled>
     </div>
   );
