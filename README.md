@@ -552,8 +552,28 @@ Copie o codigo e colo em public/index.html dentro do head.
 
 ---
 
+### Navigation
+
+Essa instalação de dependência possui a dependência em primeiro e depois o types para ser usado no TS
+
+```
+yarn add react-router-dom@5.2.0 @types/react-router-dom
+```
+
+Tem que instalar o types e a dependencia
+
+Checar a versão na maior parte das vezes isso ocorre por conta da versão atualizada não ter mais a funcionalidade, ex. (na v6 do react-router-dom não tem mais a funcionalidade Switch, eu tive que instalar a v5 para conseguir usar essa funcionalidade)
+
+[Exemplos](https://v5.reactrouter.com/web/guides/quick-start)
+
+
+
+-----
+
 
 
 ### Fazer
 
 - Emitir mensagem de erro quando a api retornar com erro
+- Criar estudo separado com autenticação de páginas (forcar somente na autenticação)
+
