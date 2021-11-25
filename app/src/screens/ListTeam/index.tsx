@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import apiMarvel from '../../services/apiMarvel';
-import { Container } from './styles';
+import Button from '../../components/Button';
+import { Container, CardList, Card } from './styles';
 
 //base do retorno do console.log, selecionei somente os campos que eu queria
 interface ResponseData {
@@ -26,11 +27,40 @@ const ListTeam = () => {
       .catch(err => console.log(err));
   }, []);
 
+  const handMore = useCallback(async () => {
+    try {
+      const offset = characters.length;
+      const response = await apiMarvel.get('characters', {
+        params: {
+          offset,
+        },
+      });
+      setCharacters([...characters, ...response.data.data.results]);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [characters]);
+
   return (
     <Container>
       <h1>Herois</h1>
+      <CardList>
+        {characters.map(character => {
+          return (
+            //passando thumbnail para o Styled Components
+            <Card key={character.id} thumbnail={character.thumbnail}>
+              <div id="img" />
+              <h2>{character.name}</h2>
+              <p>{character.description}</p>
+            </Card>
+          );
+        })}
+      </CardList>
+
+      <Button textButton={'Mais'} click={() => handMore} />
+
       {/* TODO: gerar lista de herois e permitir acessar 1 a 1 em outra janela */}
-      <ul>
+      {/* <ul>
         {characters.map(character => {
           return (
             <li key={character.id}>
@@ -43,7 +73,7 @@ const ListTeam = () => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
     </Container>
   );
 };
