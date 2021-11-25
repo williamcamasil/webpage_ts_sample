@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import apiMarvel from '../../services/apiMarvel';
 import Button from '../../components/Button';
 import { Container, CardList, Card } from './styles';
+import { Link } from 'react-router-dom';
 
 //base do retorno do console.log, selecionei somente os campos que eu queria
 interface ResponseData {
@@ -44,6 +45,9 @@ const ListTeam = () => {
   return (
     <Container>
       <h1>Herois</h1>
+      <Link to="/">
+        <Button textButton="Home" click={() => console.log('teste')} />
+      </Link>
       <CardList>
         {characters.map(character => {
           return (

@@ -2,6 +2,7 @@ import Button from '../../components/Button';
 import MockList from '../../components/MockComponents/MockList';
 import MockUnit from '../../components/MockComponents/MockUnit';
 import ExUtil from '../../components/Example/ExUtil';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const handleClick = () => {
@@ -11,6 +12,9 @@ const Home = () => {
   return (
     <div>
       <p>Home Screen</p>
+      <Link to="/heroes">
+        <Button textButton="Heroes" click={() => console.log('teste')} />
+      </Link>
 
       <MockList />
       <MockUnit />
