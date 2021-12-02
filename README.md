@@ -1,7 +1,5 @@
 # webpage_ts_sample
 
-Page with helpful content
-
 ### Create app
 
 ```typescript
@@ -40,10 +38,6 @@ Além de instalações foi feito configurações durantes as instalações e por
 [Eslint](https://eslint.org/docs/user-guide/getting-started), [Prettier](https://prettier.io/docs/en/install.html) e [video](https://www.youtube.com/watch?v=duKqKhtZmPA&ab_channel=JorgeAluizio) de apoio para configuração. 
 
 ```
-#Criar projeto
-npx create-react-app react-redux-ts --template typescript
-
-#Configurando eslint e prettier
 yarn add eslint --dev
 yarn run eslint --init
 
